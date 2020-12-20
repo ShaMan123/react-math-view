@@ -1,6 +1,6 @@
 {
   "name": "react-math-view",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React bindings for MathLive",
   "author": "ShaMan123",
   "license": "MIT",
@@ -12,6 +12,7 @@
     "node": ">=10"
   },
   "scripts": {
+    "postinstall": "cd node_modules/use-custom-element && npm run build",
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
@@ -56,7 +57,9 @@
     "react": "^16.13.1",
     "react-dom": "^17.0.1",
     "react-scripts": "^3.4.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.2.0"
   },
   "files": [
     "dist"
