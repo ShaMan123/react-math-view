@@ -8,7 +8,7 @@ import useCustomElement from './useCustomElement';
 type ExcludeKey<K, KeyToExclude> = K extends KeyToExclude ? never : K;
 type ExcludeField<A, KeyToExclude extends keyof A> = { [K in ExcludeKey<keyof A, KeyToExclude>]: A[K] };
 
-export declare type MathViewProps = PropsWithChildren<Partial<ExcludeField<MathfieldConfig, 'virtualKeyboardToggleGlyph'> & { value: string, virtualKeyboardToggleGlyph: JSX.Element }>>;
+export declare type MathViewProps = PropsWithChildren<React.HTMLAttributes<MathfieldElement> & Partial<ExcludeField<MathfieldConfig, 'virtualKeyboardToggleGlyph'> & { value: string, virtualKeyboardToggleGlyph: JSX.Element }>>;
 export declare type MathViewRef = MathfieldElement;
 
 const MathView = React.forwardRef<MathfieldElement, MathViewProps>((props, ref) => {
