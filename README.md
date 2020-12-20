@@ -1,6 +1,6 @@
 # react-math-view
 
-> React bindings for MathLive
+> React bindings for [MathLive](https://github.com/arnog/mathlive)
 
 [![NPM](https://img.shields.io/npm/v/react-math-view.svg)](https://www.npmjs.com/package/react-math-view) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -8,22 +8,26 @@
 
 ```bash
 npm install --save react-math-view
+yarn add react-math-view
 ```
 
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import { useRef } from 'react';
+import MathView, { MathViewRef } from 'react-math-view';
 
-import MyComponent from 'react-math-view'
-import 'react-math-view/dist/index.css'
-
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
-}
+const ref = useRef<MathViewRef>(null);
+const toggleKeyboard = useCallback(() => ref.current?.executeCommand('toggleVirtualKeyboard'), [ref]);
+const getSpokenValue = useCallback(() => ref.current?.getValue('spoken'), [ref]);
+<MathView
+ value="x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}"
+ ref={ref}
+  />
 ```
+
+## Looking for React-Native?
+Check out [react-native-math-view](https://github.com/ShaMan123/react-native-math-view#readme)
 
 ## License
 
