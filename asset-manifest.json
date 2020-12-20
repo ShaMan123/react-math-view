@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "./static/css/main.c9475358.chunk.css",
+    "main.js": "./static/js/main.3fa8036a.chunk.js",
+    "main.js.map": "./static/js/main.3fa8036a.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.8ecdc7e7.js",
+    "runtime-main.js.map": "./static/js/runtime-main.8ecdc7e7.js.map",
+    "static/css/2.09be264e.chunk.css": "./static/css/2.09be264e.chunk.css",
+    "static/js/2.39de5a4f.chunk.js": "./static/js/2.39de5a4f.chunk.js",
+    "static/js/2.39de5a4f.chunk.js.map": "./static/js/2.39de5a4f.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.ad3fd6010a76b452718fac3c5166f40e.js": "./precache-manifest.ad3fd6010a76b452718fac3c5166f40e.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.09be264e.chunk.css.map": "./static/css/2.09be264e.chunk.css.map",
+    "static/css/main.c9475358.chunk.css.map": "./static/css/main.c9475358.chunk.css.map",
+    "static/js/2.39de5a4f.chunk.js.LICENSE.txt": "./static/js/2.39de5a4f.chunk.js.LICENSE.txt",
+    "static/media/mathlive-fonts.css": "./static/media/KaTeX_Typewriter-Regular.db041f37.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8ecdc7e7.js",
+    "static/css/2.09be264e.chunk.css",
+    "static/js/2.39de5a4f.chunk.js",
+    "static/css/main.c9475358.chunk.css",
+    "static/js/main.3fa8036a.chunk.js"
+  ]
+}
