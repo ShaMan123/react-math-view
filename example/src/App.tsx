@@ -47,13 +47,34 @@ const App = () => {
   })
   return <div>
     <MathView
-      virtualKeyboardTheme="material"
-      onVirtualKeyboardToggle={console.log}
+      // /virtualKeyboardTheme="material"
       virtualKeyboardMode="onfocus"
-      onKeystroke={(...args) => {
-        console.log(...args);
+      onKeystroke={(sender, key, event) => {
+        console.log('onKeystroke', { sender, key, event });
         return true;
       }}
+      onMoveOutOf={(sender, direction) => {
+        console.log('onMoveOutOf', { sender, direction });
+        return true;
+      }}
+      onTabOutOf={(sender, direction) => {
+        console.log('onTabOutOf', { sender, direction });
+        return false;
+      }}
+      onFocus={(e) => console.log('onFocus', e)}
+      onBlur={(e) => console.log('onBlur', e)}
+      onVirtualKeyboardToggle={(sender, visible, keyboard) => console.log('onVirtualKeyboardToggle', { sender, visible, keyboard })}
+      onMathFieldFocus={(sender) => console.log('onMathFieldFocus', sender)}
+      onMathFieldBlur={(sender) => console.log('onMathFieldBlur', sender)}
+      onContentWillChange={(sender) => console.log('onContentWillChange', sender)}
+      onContentDidChange={(sender) => console.log('onContentDidChange', sender)}
+      onSelectionWillChange={(sender) => console.log('onSelectionWillChange', sender)}
+      onSelectionDidChange={(sender) => console.log('onSelectionDidChange', sender)}
+      onUndoStateWillChange={(target, action) => console.log('onUndoStateWillChange', { target, action })}
+      onUndoStateDidChange={(target, action) => console.log('onUndoStateDidChange', { target, action })}
+      onCommit={(sender) => console.log('onCommit', sender)}
+      onModeChange={(sender, mode) => console.log('onFonModeChangeocus', sender, mode)}
+      onReadAloudStatus={(sender) => console.log('onReadAloudStatus', sender)}
     >
       \alpha
       </MathView>
@@ -64,7 +85,7 @@ const App = () => {
       <MathWithKeyboard value="\delta" />
     </p>
     <MathWithKeyboardButton>{"x=\\frac{-b\\pm\\sqrt{b ^ 2 - 4ac}}{2a}"}</MathWithKeyboardButton>
-  </div>
+  </div >
 }
 
 export default App;
