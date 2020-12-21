@@ -46,7 +46,17 @@ const App = () => {
     }, 1500);
   })
   return <div>
-    <MathWithKeyboard>\alpha</MathWithKeyboard>
+    <MathView
+      virtualKeyboardTheme="material"
+      onVirtualKeyboardToggle={console.log}
+      virtualKeyboardMode="onfocus"
+      onKeystroke={(...args) => {
+        console.log(...args);
+        return true;
+      }}
+    >
+      \alpha
+      </MathView>
     <MathWithKeyboard value={value} />
     <MathView virtualKeyboardMode={k} className="red">{value}</MathView>
     <p>
