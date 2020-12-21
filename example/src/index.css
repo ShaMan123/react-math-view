@@ -23,3 +23,7 @@ code {
 .f1 {
   flex: 1
 }
+
+.red {
+  color: red;
+}

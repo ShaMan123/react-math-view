@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import MathView, { MathViewProps, MathViewRef } from 'react-math-view';
 
 const MathWithKeyboard = (props: MathViewProps) => {
@@ -22,6 +22,7 @@ const MathWithKeyboardButton = (props: MathViewProps) => {
   return (
     <div className="inline">
       <MathView
+        onChange={e => console.log('change', e.target)}
         className="f1"
         ref={ref}
         onBlur={() => {
@@ -36,11 +37,20 @@ const MathWithKeyboardButton = (props: MathViewProps) => {
 }
 
 const App = () => {
+  const [value, setValue] = useState("\\beta");
+  const [k, setK] = useState<"off" | "auto" | "manual" | "onfocus" | undefined>("off");
+  useEffect(() => {
+    setTimeout(() => {
+      setValue("a^2+b^2=c^2");
+      setK("onfocus");
+    }, 1500);
+  })
   return <div>
     <MathWithKeyboard>\alpha</MathWithKeyboard>
-    <MathWithKeyboard value="\beta" />
+    <MathWithKeyboard value={value} />
+    <MathView virtualKeyboardMode={k} className="red">{value}</MathView>
     <p>
-      <MathWithKeyboard value="\gamma" />
+      <MathWithKeyboard style={{ backgroundColor: 'blueviolet' }} value="\gamma" />
       <MathWithKeyboard value="\delta" />
     </p>
     <MathWithKeyboardButton>{"x=\\frac{-b\\pm\\sqrt{b ^ 2 - 4ac}}{2a}"}</MathWithKeyboardButton>
