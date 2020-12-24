@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import MathView, { MathViewProps, MathViewRef } from 'react-math-view';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import MathView, { MathChangeEvent, MathViewProps, MathViewRef } from 'react-math-view';
 
 const MathWithKeyboard = (props: MathViewProps) => {
   const ref = useRef<MathViewRef>(null);
@@ -13,6 +13,7 @@ const MathWithKeyboard = (props: MathViewProps) => {
       console.log('value', ref.current?.getValue('spoken'), ref.current?.getValue('latex'));
       ref.current?.executeCommand('hideVirtualKeyboard')
     }}
+    onChange={e => console.log('onChange', e.nativeEvent)}
     {...props}
   />
 }
@@ -36,6 +37,22 @@ const MathWithKeyboardButton = (props: MathViewProps) => {
   );
 }
 
+const ControlledMathView = (props: MathViewProps) => {
+  const [value, setValue] = useState(props.value || "$$d=\\sqrt[]{x^2+y^2}$$");
+  const onChange = useCallback((e: MathChangeEvent) => {
+    console.log('ControlledMathView onChange', e)
+    //setValue(e.nativeEvent.detail.value);
+  }, [setValue]);
+
+  return (
+    <MathView
+      {...props}
+      value={value}
+      onChange={onChange}
+    />
+  )
+}
+
 const App = () => {
   const [value, setValue] = useState("\\beta");
   const [k, setK] = useState<"off" | "auto" | "manual" | "onfocus" | undefined>("off");
@@ -46,7 +63,7 @@ const App = () => {
     }, 1500);
   })
   return <div>
-    <MathView
+    <ControlledMathView
       // /virtualKeyboardTheme="material"
       virtualKeyboardMode="onfocus"
       onKeystroke={(sender, key, event) => {
@@ -61,6 +78,7 @@ const App = () => {
         console.log('onTabOutOf', { sender, direction });
         return false;
       }}
+      onLoad={(e) => console.log('onLoad', e)}
       onFocus={(e) => console.log('onFocus', e)}
       onBlur={(e) => console.log('onBlur', e)}
       onVirtualKeyboardToggle={(sender, visible, keyboard) => console.log('onVirtualKeyboardToggle', { sender, visible, keyboard })}
@@ -73,19 +91,23 @@ const App = () => {
       onUndoStateWillChange={(target, action) => console.log('onUndoStateWillChange', { target, action })}
       onUndoStateDidChange={(target, action) => console.log('onUndoStateDidChange', { target, action })}
       onCommit={(sender) => console.log('onCommit', sender)}
-      onModeChange={(sender, mode) => console.log('onFonModeChangeocus', sender, mode)}
+      onModeChange={(sender, mode) => console.log('onModeChange', sender, mode)}
       onReadAloudStatus={(sender) => console.log('onReadAloudStatus', sender)}
+      onChange={e => console.log('onChange', e.nativeEvent)}
     >
       \alpha
-      </MathView>
+      </ControlledMathView>
     <MathWithKeyboard value={value} />
     <MathView virtualKeyboardMode={k} className="red">{value}</MathView>
     <p>
       <MathWithKeyboard style={{ backgroundColor: 'blueviolet' }} value="\gamma" />
       <MathWithKeyboard value="\delta" />
     </p>
+
+    <ControlledMathView onChange={e => console.log('onChange', e.nativeEvent)} />
     <MathWithKeyboardButton>{"x=\\frac{-b\\pm\\sqrt{b ^ 2 - 4ac}}{2a}"}</MathWithKeyboardButton>
-  </div >
+
+  </div>
 }
 
 export default App;
