@@ -41,7 +41,7 @@ const ControlledMathView = (props: MathViewProps) => {
   const [value, setValue] = useState(props.value || "$$d=\\sqrt[]{x^2+y^2}$$");
   const onChange = useCallback((e: MathChangeEvent) => {
     console.log('ControlledMathView onChange', e)
-    //setValue(e.nativeEvent.detail.value);
+    setValue(e.nativeEvent.detail.value);
   }, [setValue]);
 
   return (
@@ -104,7 +104,7 @@ const App = () => {
       <MathWithKeyboard value="\delta" />
     </p>
 
-    <ControlledMathView virtualKeyboardMode="onfocus" />
+    <ControlledMathView virtualKeyboardMode="onfocus" onCommit={(sender) => console.log('onCommit', sender)} />
     <MathWithKeyboardButton>{"x=\\frac{-b\\pm\\sqrt{b ^ 2 - 4ac}}{2a}"}</MathWithKeyboardButton>
 
   </div>
