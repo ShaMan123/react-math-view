@@ -4,7 +4,7 @@ import React, { useCallback, useLayoutEffect, useRef } from "react";
 import { renderToString } from "react-dom/server";
 import { MathViewProps, MathViewRef } from "./types";
 
-const options: Array<keyof MathfieldConfig> = [
+export const options: Array<keyof MathfieldConfig> = [
   "createHTML",
   "customVirtualKeyboardLayers",
   "customVirtualKeyboards",
@@ -108,13 +108,14 @@ export function useUpdateOptions(ref: React.RefObject<MathViewRef>, config: Part
 }
 
 /**
- * @deprecated Events don't fire for some reason, I think it's because the exposed ref isn't the exact mathfield element, using setOptions instead.
+ * @deprecated Events don't fire for some reason. Probably becasue mathfield resides in a shadow node.
+ * https://github.com/facebook/react/issues/7901
  * @param node 
  * @param props 
  */
 export function handleEventRegistration(node: HTMLElement, props: MathViewProps) {
   const fns: { key: string, fn: (customEvent: any) => any }[] = Object.keys(props)
-    .filter(key => props[key] instanceof Function)
+    .filter(key => typeof props[key] === 'function' && key.startsWith('on'))
     .map(key => ({
       key: MAPPING[key] || key,
       fn: (...args: any[]) => { props[key](...args) },
