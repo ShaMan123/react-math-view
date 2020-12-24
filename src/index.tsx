@@ -2,9 +2,10 @@ import { Mathfield, MathfieldElement } from 'mathlive';
 import 'mathlive/dist/mathlive-fonts.css';
 import 'mathlive/dist/mathlive.min';
 import React, { useCallback, useEffect, useImperativeHandle, useMemo, useRef } from 'react';
+import ReactDOM from 'react-dom';
 import { renderToString } from 'react-dom/server';
 import { MathViewProps } from './types';
-import { filterConfig, useEventDispatchRef, useUpdateOptions } from './utils';
+import { filterConfig, useAddChild, useEventDispatchRef, useUpdateOptions } from './utils';
 
 const MathView = React.forwardRef<MathfieldElement, MathViewProps>((props, ref) => {
   const _ref = useRef<MathfieldElement>(null);
@@ -48,7 +49,7 @@ const MathViewWrapper = React.forwardRef<MathfieldElement, MathViewProps>((props
 
   return (
     <React.Fragment>
-      <input hidden ref={_input} onChange={props.onChange as any} />
+      {ReactDOM.createPortal(<input hidden ref={_input} onChange={props.onChange as any} />, useAddChild('span'))}
       <MathView
         {...props}
         ref={ref}

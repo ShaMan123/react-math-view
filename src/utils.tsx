@@ -1,6 +1,6 @@
 import isEqual from 'lodash.isequal';
 import { MathfieldConfig } from "mathlive";
-import React, { useCallback, useLayoutEffect, useRef } from "react";
+import React, { useCallback, useLayoutEffect, useMemo, useRef } from "react";
 import { renderToString } from "react-dom/server";
 import { MathViewProps, MathViewRef } from "./types";
 
@@ -155,4 +155,13 @@ export function useEventDispatchRef() {
   }, [ref]);
 
   return [ref, dispatchEvent] as [typeof ref, typeof dispatchEvent];
+}
+
+export function useAddChild(tagName: keyof HTMLElementTagNameMap) {
+  const container = useMemo(() => document.createElement(tagName), []);
+  useLayoutEffect(() => {
+    document.body.appendChild(container);
+    return () => { document.body.removeChild(container) };
+  }, [container]);
+  return container;
 }
