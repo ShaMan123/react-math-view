@@ -104,7 +104,7 @@ const App = () => {
       <MathWithKeyboard value="\delta" />
     </p>
 
-    <ControlledMathView onChange={e => console.log('onChange', e.nativeEvent)} />
+    <ControlledMathView virtualKeyboardMode="onfocus" />
     <MathWithKeyboardButton>{"x=\\frac{-b\\pm\\sqrt{b ^ 2 - 4ac}}{2a}"}</MathWithKeyboardButton>
 
   </div>
