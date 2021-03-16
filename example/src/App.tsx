@@ -121,7 +121,7 @@ const App = () => {
       <MathView virtualKeyboardMode={k} className="red">{value}</MathView>
       <p>
         <MathWithKeyboard style={{ backgroundColor: 'blueviolet' }} value="\gamma" />
-        <MathWithKeyboard value="\delta" />
+        <MathWithKeyboard ignoreSpacebarInMathMode={false} value="\delta" />
       </p>
       <MathWithKeyboardButton>{"x=\\frac{-b\\pm\\sqrt{b ^ 2 - 4ac}}{2a}"}</MathWithKeyboardButton>
       <div style={{ margin: 50 }}>
