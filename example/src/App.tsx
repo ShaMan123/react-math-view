@@ -132,7 +132,13 @@ const App = () => {
         <strong>check the console for logs</strong>
       </div>
       <div>
-        <div>issue <a href="https://github.com/arnog/react-mathlive/issues/4" target="_blank"><strong>#4</strong></a></div>
+        <div>
+          <span style={{ textDecoration: 'line-through' }}>
+            issue <a href="https://github.com/arnog/react-mathlive/issues/4" target="_blank"><strong>#4</strong></a>
+          </span>
+          <br />
+          <strong>RESOLVED!</strong>
+        </div>
         <label htmlFor="@">toggle to test how caret is affected</label>
         <input id="@" type="checkbox" checked={enabled} onChange={e => setEnabled(e.currentTarget.checked)} />
         {enabled ? <WithSetOptions value={value} /> : <MathView value={value} />}
