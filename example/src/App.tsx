@@ -82,6 +82,30 @@ const App = () => {
   const [enabled, setEnabled] = useState(true);
   return (
     <div>
+      <div
+        style={{
+          position: 'absolute',
+          right: 0,
+          margin: 20
+        }}
+      >
+        <iframe
+          src="https://ghbtns.com/github-btn.html?user=ShaMan123&repo=react-math-view&type=star&count=true&size=large"
+          frameborder="0"
+          scrolling="0"
+          width="150"
+          height="30"
+          title="GitHub"
+        />
+        <iframe
+          src="https://ghbtns.com/github-btn.html?user=ShaMan123&repo=react-math-view&type=fork&count=true&size=large"
+          frameborder="0"
+          scrolling="0"
+          width="150"
+          height="30"
+          title="GitHub"
+        />
+      </div>
       <ControlledMathView
         // /virtualKeyboardTheme="material"
         virtualKeyboardMode="onfocus"

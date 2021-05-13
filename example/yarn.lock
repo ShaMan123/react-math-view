@@ -1645,12 +1645,22 @@
     csstype "^3.0.2"
 
 "@types/react@^16":
-  version "0.0.0"
-  uid ""
+  version "16.14.6"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.14.6.tgz#d933a2a6bc1bfe320a5eea480e8f45ba8126d6ee"
+  integrity sha512-Ol/aFKune+P0FSFKIgf+XbhGzYGyz0p7g5befSt4rmbzfGLaZR0q7jPew9k7d3bvrcuaL8dPy9Oz3XGZmf9n+w==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
 
 "@types/react@link:../node_modules/@types/react":
   version "0.0.0"
   uid ""
+
+"@types/scheduler@*":
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.1.tgz#18845205e86ff0038517aab7a18a62a6b9f71275"
+  integrity sha512-EaCxbanVeyxDRTQBkdLb3Bvl/HK7PBK6UJjsSixB0iHKoWxE5uu2Q/DgtpOhPIojN0Zl1whvOd7PoHs2P0s5eA==
 
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
@@ -6764,10 +6774,10 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-mathlive@^0.59.0:
-  version "0.59.0"
-  resolved "https://registry.yarnpkg.com/mathlive/-/mathlive-0.59.0.tgz#95e3720a8c16a295d266c36ddf9d6c8bfc363228"
-  integrity sha512-CUf7kAY1UWTvJm5IFJrFlXssyl851aGPNAdlchMbAMZQnryudQJE59BlrPTtAeY95k41PGqMmM8Vozj+We+hNA==
+mathlive@>=0.64.0:
+  version "0.64.0"
+  resolved "https://registry.yarnpkg.com/mathlive/-/mathlive-0.64.0.tgz#36c90e95f486fbc15392b36b1a668bb09bbbc3d1"
+  integrity sha512-gVIYY/hrzuiz/6f6ac1YVHD+kfw6eR757TlCvTGRvmj/Rgimmry7cv0esKvxQ++1KFuPlkQPStcpk19ZZmggsA==
 
 md5.js@^1.3.4:
   version "1.3.5"
