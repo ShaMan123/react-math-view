@@ -4,6 +4,9 @@
 
 [![NPM](https://img.shields.io/npm/v/react-math-view.svg)](https://www.npmjs.com/package/react-math-view) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+
+## [Live Example](https://shaman123.github.io/react-math-view/)
+
 ## Install
 
 ```bash
@@ -26,9 +29,6 @@ const getSpokenValue = useCallback(() => ref.current?.getValue('spoken'), [ref])
   />
 ```
 
-## Example
-Check out the [live example](https://shaman123.github.io/react-math-view/).
-
 ## Looking for React-Native?
 Check out [react-native-math-view](https://github.com/ShaMan123/react-native-math-view#readme).
 
@@ -36,7 +36,7 @@ Check out [react-native-math-view](https://github.com/ShaMan123/react-native-mat
 ### Before you begin make sure to install dependecies
 #### Don't forget to do the same in `/example` before running it
 ```bash
-npm i /* or */ yarn --production=false
+npm i && npm i --only=dev /* or */ yarn --production=false
 ```
 
 ### Available commands
