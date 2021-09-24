@@ -138,13 +138,13 @@ const App = () => {
         <MathWithKeyboard value="\delta" />
       </p>
       <MathWithKeyboardButton>{"x=\\frac{-b\\pm\\sqrt{b ^ 2 - 4ac}}{2a}"}</MathWithKeyboardButton>
-      <div style={{ margin: 50 }}>
-        <div>ControlledMathView with Callback</div>
-        <ControlledMathView virtualKeyboardMode="onfocus" onCommit={(sender) => console.log('onCommit', sender)} />
-        <div>ControlledMathView <strong>without</strong> Callback</div>
-        <ControlledMathView virtualKeyboardMode={k} /*onCommit={(sender) => console.log('onCommit', sender)} */ />
-        <strong>check the console for logs</strong>
-      </div>
+      <h3>Controlled MathView</h3>
+      <h4>Controlled MathView with Callback</h4>
+      <ControlledMathView virtualKeyboardMode="onfocus" onCommit={(sender) => console.log('onCommit', sender)} />
+      <h4>Controlled MathView <strong>without</strong> Callback</h4>
+      <ControlledMathView virtualKeyboardMode={k} /*onCommit={(sender) => console.log('onCommit', sender)} */ />
+      <h5>check the console for logs</h5>
+
     </div>
   )
 }
