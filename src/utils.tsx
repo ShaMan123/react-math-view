@@ -1,6 +1,6 @@
 import isEqual from 'lodash.isequal';
 import { MathfieldConfig } from "mathlive";
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { renderToString } from "react-dom/server";
 import { MathViewProps, MathViewRef } from "./types";
 
@@ -103,6 +103,20 @@ const MAPPING = {
   htmlFor: 'for',
 };
 
+export function useValue(props: MathViewProps, ref: React.RefObject<MathViewRef>) {
+  const value = useMemo(() =>
+    props.children ?
+      renderToString(props.children as React.ReactElement)! :
+      props.value || "",
+    [props.children, props.value]
+  );
+  useEffect(() => {
+    ref.current?.setValue(value);
+  }, [value]);
+
+  return value;
+}
+
 export function filterConfig(props: MathViewProps) {
   const config: Partial<MathfieldConfig> = {};
   const passProps: MathViewProps = {};
@@ -121,6 +135,35 @@ export function filterConfig(props: MathViewProps) {
     }
   }
   return [config, passProps] as [typeof config, typeof passProps];
+}
+
+/**
+ * Mathfield resets caret position when value is set imperatively (not while editing).
+ * This is why we need to set caret position for controlled math view after value has been changed.
+ */
+export function useControlledConfig(value: string, { onContentWillChange, onContentDidChange, ...props }: ReturnType<typeof filterConfig>[0]) {
+  const position = useRef<{ x: number, y: number } | null>(null);
+  const _value = useRef<string>(value || '');
+  //  save caret position if necessary
+  const _onContentWillChange = useCallback<MathfieldConfig['onContentWillChange']>((sender) => {
+    const p = _value.current !== value && sender.getCaretPoint && sender.getCaretPoint();
+    p && (position.current = p);
+    onContentWillChange && onContentWillChange(sender);
+  }, [onContentWillChange, value]);
+  //  set caret position if necessary
+  const _onContentDidChange = useCallback<MathfieldConfig['onContentDidChange']>((sender) => {
+    position.current && sender.setCaretPoint(position.current.x, position.current.y);
+    onContentDidChange && onContentDidChange(sender)
+  }, [onContentDidChange]);
+  //  update _value
+  useEffect(() => {
+    _value.current = value || '';
+  }, [value]);
+  return {
+    ...props,
+    onContentWillChange: _onContentWillChange,
+    onContentDidChange: _onContentDidChange
+  }
 }
 
 /**
