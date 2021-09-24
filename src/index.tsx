@@ -18,6 +18,9 @@ const MathView = React.forwardRef<MathfieldElement, MathViewProps>((props, ref) 
   const [config, passProps] = useMemo(() => filterConfig(props), [props]);
   useEventRegistration(_ref, props);
   useUpdateOptions(_ref, config);
+  useEffect(() => {
+    _ref.current?.setValue(value);
+  }, [value]);
 
   return (
     <math-field
