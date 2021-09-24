@@ -1,7 +1,7 @@
 import { MathfieldElement } from 'mathlive';
 import 'mathlive/dist/mathlive-fonts.css';
 import 'mathlive/dist/mathlive.min';
-import React, { useImperativeHandle, useMemo, useRef } from 'react';
+import React, { useEffect, useImperativeHandle, useMemo, useRef } from 'react';
 import { renderToString } from 'react-dom/server';
 import { MathViewProps } from './types';
 import { filterConfig, useEventRegistration, useUpdateOptions } from './utils';
