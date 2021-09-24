@@ -9,7 +9,6 @@ const MathWithKeyboard = React.memo((props: MathViewProps) => {
       ref.current?.executeCommand('showVirtualKeyboard');
     }}
     onBlur={() => {
-      console.log('caret', ref.current?.caretPoint);
       console.log('value', ref.current?.getValue('spoken'), ref.current?.getValue('latex'));
       ref.current?.executeCommand('hideVirtualKeyboard')
     }}
@@ -27,7 +26,6 @@ const MathWithKeyboardButton = React.memo((props: MathViewProps) => {
         className="f1"
         ref={ref}
         onBlur={() => {
-          console.log('caret', ref.current?.caretPoint);
           console.log('value', ref.current?.getValue('spoken'), ref.current?.getValue('latex'));
         }}
         {...props}
