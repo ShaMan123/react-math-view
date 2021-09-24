@@ -59,15 +59,6 @@ const ControlledMathView = React.memo((props: MathViewProps) => {
   )
 })
 
-const WithSetOptions = (props: MathViewProps) => {
-  const ref = useRef<MathViewRef>(null);
-  useEffect(() => {
-    const t = setInterval(() => ref.current?.setOptions({}), 1000);
-    return () => clearInterval(t)
-  });
-  return <MathView {...props} ref={ref} />
-}
-
 const App = () => {
   const [value, setValue] = useState("\\beta");
   const [k, setK] = useState<"off" | "auto" | "manual" | "onfocus" | undefined>("off");
