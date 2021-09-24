@@ -59,6 +59,34 @@ const ControlledMathView = React.memo((props: MathViewProps) => {
   )
 })
 
+const GithubButtons = React.memo(() =>
+  <div
+    style={{
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      margin: 20,
+    }}
+  >
+    <iframe
+      src="https://ghbtns.com/github-btn.html?user=ShaMan123&repo=react-math-view&type=star&count=true&size=small"
+      frameBorder="0"
+      scrolling="0"
+      title="GitHub"
+      width={100}
+      height={25}
+    />
+    <iframe
+      src="https://ghbtns.com/github-btn.html?user=ShaMan123&repo=react-math-view&type=fork&count=true&size=small"
+      frameBorder="0"
+      scrolling="0"
+      title="GitHub"
+      width={100}
+      height={25}
+    />
+  </div>
+)
+
 const App = () => {
   const [value, setValue] = useState("\\beta");
   const [k, setK] = useState<"off" | "auto" | "manual" | "onfocus" | undefined>("off");
@@ -71,31 +99,6 @@ const App = () => {
 
   return (
     <div>
-      <div
-        style={{
-          position: 'absolute',
-          right: 0,
-          margin: 20
-        }}
-      >
-        <iframe
-          src="https://ghbtns.com/github-btn.html?user=ShaMan123&repo=react-math-view&type=star&count=true&size=small"
-          frameBorder="0"
-          scrolling="0"
-          width="150"
-          height="30"
-          title="GitHub"
-        />
-        <iframe
-          src="https://ghbtns.com/github-btn.html?user=ShaMan123&repo=react-math-view&type=fork&count=true&size=small"
-          frameBorder="0"
-          scrolling="0"
-          width="150"
-          height="30"
-          title="GitHub"
-
-        />
-      </div>
       <ControlledMathView
         // /virtualKeyboardTheme="material"
         virtualKeyboardMode="onfocus"
@@ -144,7 +147,7 @@ const App = () => {
       <h4>Controlled MathView <strong>without</strong> Callback</h4>
       <ControlledMathView virtualKeyboardMode={k} /*onCommit={(sender) => console.log('onCommit', sender)} */ />
       <h5>check the console for logs</h5>
-
+      <GithubButtons />
     </div>
   )
 }
