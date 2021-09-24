@@ -116,7 +116,7 @@ export function filterConfig(props: MathViewProps) {
         value = renderToString(value as React.ReactElement);
       }
       config[key] = value;
-    } else {
+    } else if (key !== 'value') {
       passProps[key] = value;
     }
   }
