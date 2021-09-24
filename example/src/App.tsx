@@ -90,20 +90,21 @@ const App = () => {
         }}
       >
         <iframe
-          src="https://ghbtns.com/github-btn.html?user=ShaMan123&repo=react-math-view&type=star&count=true&size=large"
-          frameborder="0"
+          src="https://ghbtns.com/github-btn.html?user=ShaMan123&repo=react-math-view&type=star&count=true&size=small"
+          frameBorder="0"
           scrolling="0"
           width="150"
           height="30"
           title="GitHub"
         />
         <iframe
-          src="https://ghbtns.com/github-btn.html?user=ShaMan123&repo=react-math-view&type=fork&count=true&size=large"
-          frameborder="0"
+          src="https://ghbtns.com/github-btn.html?user=ShaMan123&repo=react-math-view&type=fork&count=true&size=small"
+          frameBorder="0"
           scrolling="0"
           width="150"
           height="30"
           title="GitHub"
+
         />
       </div>
       <ControlledMathView
