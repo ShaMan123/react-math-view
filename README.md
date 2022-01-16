@@ -32,6 +32,9 @@ const getSpokenValue = useCallback(() => ref.current?.getValue('spoken'), [ref])
 ## Looking for React-Native?
 Check out [react-native-math-view](https://github.com/ShaMan123/react-native-math-view#readme).
 
+## Other Options
+[react-mathlive] (https://github.com/concludio/react-mathlive)
+
 ## Dev
 ### Before you begin make sure to install dependecies
 #### Don't forget to do the same in `/example` before running it
